@@ -1,0 +1,79 @@
+<link rel="stylesheet" href="productos.css">
+
+<main class="main">
+
+    <!-- ENCABEZADO -->
+    <header class="header">
+
+        <div class="logo">
+            <h1>🛒 Beto Shop</h1>
+            <p>Tu tienda tecnológica</p>
+        </div>
+
+        <div class="acciones">
+
+            <input
+                type="text"
+                placeholder="Buscar productos..."
+                class="buscador"
+                [(ngModel)]="textoBusqueda">
+
+            <select class="categoria" [(ngModel)]="categoriaSeleccionada">
+                <option>Todas las categorías</option>
+                <option>Computadores</option>
+                <option>Celulares</option>
+                <option>Tabletas</option>
+                <option>Monitores</option>
+                <option>Accesorios</option>
+                <option>Componentes</option>
+            </select>
+
+        </div>
+
+    </header>
+
+    <!-- PRODUCTOS -->
+    <section class="productos-grid">
+
+        <!-- Iteración con *ngFor -->
+        <article class="producto" *ngFor="let producto of productosFiltrados">
+
+            <img [src]="producto.imagen" [alt]="producto.nombre">
+
+            <span class="categoria-tag">
+                {{ producto.categoria }}
+            </span>
+
+            <h3>{{ producto.nombre }}</h3>
+
+            <p>
+                {{ producto.descripcion }}
+            </p>
+
+            <div class="precio">
+                {{ producto.precio }}
+            </div>
+
+            <!-- Clase dinámica para el stock -->
+            <div class="stock" [ngClass]="producto.stock">
+                {{ producto.stock === 'disponible' ? 'Disponible' : 'Agotado' }}
+            </div>
+
+            <div class="acciones-producto">
+
+                <button class="btn-detalle" (click)="verDetalle(producto)">
+                    Ver detalle
+                </button>
+
+                <button class="btn-carrito" (click)="agregarAlCarrito(producto)">
+                    Agregar
+                </button>
+
+            </div>
+
+        </article>
+
+    </section>
+</main>
+
+<router-outlet></router-outlet>

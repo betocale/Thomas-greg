@@ -1,0 +1,274 @@
+/* ==============================================
+   VARIABLES
+   ============================================== */
+:root {
+    --primary: #2563eb;
+    --primary-hover: #1d4ed8;
+    --secondary: #06b6d4;
+    --success: #22c55e;
+    --danger: #ef4444;
+    --warning: #f59e0b;
+    --dark: #0f172a;
+    --text: #475569;
+    --light: #f8fafc;
+    --white: #ffffff;
+    --border: #e2e8f0;
+    --shadow: 0 10px 30px rgba(15, 23, 42, .08);
+    --radius: 18px;
+}
+
+/* ==============================================
+   RESET
+   ============================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: #f4f7fb;
+    color: var(--text);
+}
+
+img {
+    width: 100%;
+    display: block;
+}
+
+button {
+    cursor: pointer;
+    border: none;
+    font-family: inherit;
+}
+
+a {
+    text-decoration: none;
+}
+
+/* ==============================================
+   MAIN CONTAINER
+   ============================================== */
+.main {
+    width: 100%;
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 40px;
+}
+
+/* ==============================================
+   HEADER
+   ============================================== */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-bottom: 50px;
+}
+
+.logo h1 {
+    color: var(--primary);
+    font-size: 2.4rem;
+    margin-bottom: 6px;
+}
+
+.logo p {
+    color: var(--text);
+}
+
+.acciones {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.buscador {
+    width: 340px;
+    padding: 15px 18px;
+    border-radius: 15px;
+    border: 1px solid var(--border);
+    outline: none;
+    font-size: 15px;
+    background: var(--white);
+    transition: border-color 0.3s ease;
+}
+
+.buscador:focus {
+    border-color: var(--primary);
+}
+
+.categoria {
+    padding: 15px 18px;
+    border-radius: 15px;
+    border: 1px solid var(--border);
+    background: var(--white);
+    font-size: 15px;
+    outline: none;
+}
+
+/* ==============================================
+   GRID
+   ============================================== */
+.productos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+    gap: 30px;
+}
+
+/* ==============================================
+   CARD (PRODUCTO)
+   ============================================== */
+.producto {
+    background: var(--white);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: transform 0.35s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.producto:hover {
+    transform: translateY(-8px);
+}
+
+.producto img {
+    height: 230px;
+    object-fit: cover;
+}
+
+/* ==============================================
+   CONTENIDO DE LA TARJETA
+   ============================================== */
+.producto h3 {
+    font-size: 22px;
+    color: var(--dark);
+    margin: 20px 20px 10px;
+}
+
+.producto p {
+    margin: 0 20px;
+    line-height: 1.6;
+    color: var(--text);
+    min-height: 50px;
+}
+
+.categoria-tag {
+    display: inline-block;
+    margin: 20px 20px 0;
+    padding: 8px 14px;
+    border-radius: 50px;
+    background: #dbeafe;
+    color: #1d4ed8;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.precio {
+    margin: 20px;
+    font-size: 28px;
+    font-weight: bold;
+    color: var(--primary);
+}
+
+.stock {
+    margin: 0 20px;
+    width: max-content;
+    padding: 8px 18px;
+    border-radius: 30px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.disponible {
+    background: #dcfce7;
+    color: #15803d;
+}
+
+.agotado {
+    background: #fee2e2;
+    color: #dc2626;
+}
+
+/* ==============================================
+   BOTONES
+   ============================================== */
+.acciones-producto {
+    display: flex;
+    gap: 12px;
+    padding: 20px;
+    margin-top: auto;
+}
+
+.btn-detalle {
+    flex: 1;
+    background: var(--white);
+    border: 1px solid var(--primary);
+    color: var(--primary);
+    border-radius: 12px;
+    padding: 13px;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+.btn-detalle:hover {
+    background: var(--primary);
+    color: var(--white);
+}
+
+.btn-carrito {
+    flex: 1;
+    background: var(--primary);
+    color: var(--white);
+    border-radius: 12px;
+    padding: 13px;
+    transition: background 0.3s ease;
+}
+
+.btn-carrito:hover {
+    background: var(--primary-hover);
+}
+
+/* ==============================================
+   RESPONSIVE DESIGN
+   ============================================== */
+@media (max-width: 900px) {
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .acciones {
+        width: 100%;
+        flex-direction: column;
+    }
+
+    .buscador,
+    .categoria {
+        width: 100%;
+    }
+
+    .main {
+        padding: 20px;
+    }
+
+    .logo h1 {
+        font-size: 2rem;
+    }
+
+    .producto img {
+        height: 200px;
+    }
+}
+
+@media (max-width: 600px) {
+    .productos-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .acciones-producto {
+        flex-direction: column;
+    }
+}
