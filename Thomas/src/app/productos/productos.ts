@@ -119,4 +119,10 @@ export class ProductosComponent {
   agregarAlCarrito(producto: Producto) {
     console.log('Agregado al carrito:', producto.nombre);
   }
+  
+ volver(): void {
+  // Lógica para regresar a la página anterior
+  window.history.back();
+}
+
 }

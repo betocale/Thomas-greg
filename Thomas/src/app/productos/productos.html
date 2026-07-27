@@ -2,6 +2,12 @@
 
 <main class="main">
 
+        <div class="cta-buttons">
+            <button type="button" class="btn-secondary" (click)="volver()">
+              ← Volver
+            </button>
+        </div>
+
     <!-- ENCABEZADO -->
     <header class="header">
 
@@ -9,6 +15,8 @@
             <h1>🛒 Beto Shop</h1>
             <p>Tu tienda tecnológica</p>
         </div>
+
+    
 
         <div class="acciones">
 
@@ -58,6 +66,7 @@
             <div class="stock" [ngClass]="producto.stock">
                 {{ producto.stock === 'disponible' ? 'Disponible' : 'Agotado' }}
             </div>
+
 
             <div class="acciones-producto">
 
