@@ -1,12 +1,25 @@
 import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Router, RouterOutlet, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  standalone: true,
+  imports: [RouterOutlet, RouterLink],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
 export class App {
-  protected readonly title = signal('Thomas');
+  protected readonly title = signal('Beto Shop');
+
+  constructor(private router: Router) {}
+
+  iniciarSesion(): void {
+    // Redirige o abre la vista de login
+    this.router.navigate(['/login']);
+  }
+
+  verDocumentacion(): void {
+    // Enlace o lógica de documentación
+    window.open('https://angular.dev', '_blank');
+  }
 }
