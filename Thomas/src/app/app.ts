@@ -15,7 +15,7 @@ export class App {
 
   iniciarSesion(): void {
     // Redirige o abre la vista de login
-    this.router.navigate(['/login']);
+    this.router.navigate(['./inicio-seccion']);
   }
 
   verDocumentacion(): void {

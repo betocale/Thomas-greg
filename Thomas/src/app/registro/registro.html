@@ -1,0 +1,113 @@
+<link rel="stylesheet" href="registro.css">
+
+<main class="main">
+  <div class="content register-container">
+
+    <!-- LADO IZQUIERDO -->
+    <div class="left-side">
+      <div class="brand-badge">📦 Beto Shop</div>
+
+      <h1>
+        Crea tu
+        <span class="gradient-text">Cuenta</span>
+      </h1>
+
+      <p>
+        Regístrate para administrar productos, inventario, pedidos y reportes
+        desde una sola plataforma.
+      </p>
+
+      <div class="cta-buttons">
+        <a class="btn-secondary" routerLink="/inicio-seccion">
+          ← Ya tengo una cuenta
+        </a>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- LADO DERECHO -->
+    <div class="right-side">
+
+      <h2 class="modules-title">Registro de Usuario</h2>
+
+      <form (ngSubmit)="registrar()">
+
+        <div class="form-group">
+          <label>Nombre Completo</label>
+          <input
+            type="text"
+            name="nombre"
+            placeholder="Juan Pérez"
+            required
+            [(ngModel)]="usuario.nombre">
+        </div>
+
+        <div class="form-group">
+          <label>Correo Electrónico</label>
+          <input
+            type="email"
+            name="correo"
+            placeholder="correo@ejemplo.com"
+            required
+            [(ngModel)]="usuario.correo">
+        </div>
+
+        <div class="form-group">
+          <label>Teléfono</label>
+          <input
+            type="tel"
+            name="telefono"
+            placeholder="3001234567"
+            [(ngModel)]="usuario.telefono">
+        </div>
+
+        <div class="form-group">
+          <label>Rol</label>
+
+          <select
+            name="rol"
+            [(ngModel)]="usuario.rol">
+
+            <option value="">Seleccione...</option>
+            <option value="ADMIN">Administrador</option>
+            <option value="EMPLEADO">Empleado</option>
+            <option value="CLIENTE">Cliente</option>
+
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Contraseña</label>
+
+          <input
+            type="password"
+            name="password"
+            required
+            placeholder="********"
+            [(ngModel)]="usuario.password">
+        </div>
+
+        <div class="form-group">
+          <label>Confirmar Contraseña</label>
+
+          <input
+            type="password"
+            name="confirmar"
+            required
+            placeholder="********"
+            [(ngModel)]="usuario.confirmarPassword">
+        </div>
+
+        <button class="btn-primary btn-submit">
+          Crear Cuenta
+        </button>
+
+      </form>
+
+    </div>
+
+  </div>
+</main>
+
+<router-outlet></router-outlet>
