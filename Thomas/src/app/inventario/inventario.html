@@ -1,0 +1,147 @@
+<link rel="stylesheet" href="inventario.css">
+<div class="inventario-container">
+
+    <div class="header">
+        <div>
+            <h1>📦 Inventario</h1>
+            <p>Administración de productos</p>
+        </div>
+
+        <button class="btn-agregar" (click)="mostrarFormulario = !mostrarFormulario">
+            {{ mostrarFormulario ? 'Cancelar' : '+ Nuevo Producto' }}
+        </button>
+    </div>
+
+    <!-- Formulario -->
+    <div class="formulario" *ngIf="mostrarFormulario">
+        <h2>Registrar Producto</h2>
+
+        <div class="grid-form">
+            <div class="campo">
+                <label>Nombre</label>
+                <input
+                    type="text"
+                    [(ngModel)]="nuevoProducto.nombre">
+            </div>
+
+            <div class="campo">
+                <label>Categoría</label>
+                <select [(ngModel)]="nuevoProducto.categoria">
+                    <option value="">Seleccione una categoría</option>
+                    <option>Computadores</option>
+                    <option>Celulares</option>
+                    <option>Tabletas</option>
+                    <option>Monitores</option>
+                    <option>Accesorios</option>
+                    <option>Componentes</option>
+                </select>
+            </div>
+
+            <div class="campo">
+                <label>Precio</label>
+                <input
+                    type="number"
+                    [(ngModel)]="nuevoProducto.precio">
+            </div>
+
+            <div class="campo">
+                <label>Stock</label>
+                <input
+                    type="number"
+                    [(ngModel)]="nuevoProducto.stock">
+            </div>
+
+            <div class="campo campo-completo">
+                <label>Imagen (URL)</label>
+                <input
+                    type="text"
+                    [(ngModel)]="nuevoProducto.imagen">
+            </div>
+
+            <div class="campo campo-completo">
+                <label>Descripción</label>
+                <textarea
+                    rows="4"
+                    [(ngModel)]="nuevoProducto.descripcion">
+                </textarea>
+            </div>
+        </div>
+
+        <div class="acciones-formulario">
+            <button
+                class="btn-guardar"
+                (click)="guardarProducto()">
+                Guardar Producto
+            </button>
+        </div>
+    </div>
+
+    <!-- Buscador -->
+    <div class="barra-busqueda">
+        <input
+            type="text"
+            placeholder="Buscar producto..."
+            [(ngModel)]="textoBusqueda">
+    </div>
+
+    <!-- Tabla -->
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Imagen</th>
+                <th>Producto</th>
+                <th>Categoría</th>
+                <th>Precio</th>
+                <th>Stock</th>
+                <th>Estado</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let producto of productosFiltrados">
+                <td>{{ producto.id }}</td>
+                <td>
+                    <img
+                        [src]="producto.imagen || 'https://via.placeholder.com/50'"
+                        [alt]="producto.nombre"
+                        class="miniatura">
+                </td>
+                <td>{{ producto.nombre }}</td>
+                <td>{{ producto.categoria }}</td>
+                <td>{{ producto.precio | currency:'COP':'symbol':'1.0-0' }}</td>
+                <td>{{ producto.stock }}</td>
+                <td>
+                    <span
+                        class="estado"
+                        [class.disponible]="producto.stock > 0"
+                        [class.agotado]="producto.stock === 0">
+                        {{ producto.stock > 0 ? 'Disponible' : 'Agotado' }}
+                    </span>
+                </td>
+                <td>
+                    <button
+                        class="btn-editar"
+                        (click)="editarProducto(producto)">
+                        ✏ Editar
+                    </button>
+                    <button
+                        class="btn-eliminar"
+                        (click)="eliminarProducto(producto.id)">
+                        🗑 Eliminar
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- Sin resultados -->
+    <div
+        class="sin-datos"
+        *ngIf="productosFiltrados.length === 0">
+        <h2>No hay productos registrados</h2>
+    </div>
+
+</div>
+
+<router-outlet></router-outlet>

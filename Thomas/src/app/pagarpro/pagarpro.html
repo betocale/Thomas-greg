@@ -1,0 +1,214 @@
+<link rel="stylesheet" href="pagarpro.css">
+
+<div class="pago-container">
+    <!-- Encabezado -->
+    <div class="encabezado">
+        <h1>💳 Finalizar Compra</h1>
+        <p>Complete la información para finalizar su pedido.</p>
+    </div>
+
+    <div class="contenido">
+        <!-- Datos del Cliente -->
+        <section class="card">
+            <h2>👤 Datos del Cliente</h2>
+            <div class="grid">
+                <div class="campo">
+                    <label>Nombre Completo</label>
+                    <input
+                        type="text"
+                        placeholder="Ingrese su nombre"
+                        [(ngModel)]="cliente.nombre">
+                </div>
+
+                <div class="campo">
+                    <label>Correo Electrónico</label>
+                    <input
+                        type="email"
+                        placeholder="correo@ejemplo.com"
+                        [(ngModel)]="cliente.correo">
+                </div>
+
+                <div class="campo">
+                    <label>Teléfono</label>
+                    <input
+                        type="text"
+                        placeholder="3001234567"
+                        [(ngModel)]="cliente.telefono">
+                </div>
+
+                <div class="campo">
+                    <label>Documento</label>
+                    <input
+                        type="text"
+                        placeholder="Número de documento"
+                        [(ngModel)]="cliente.documento">
+                </div>
+            </div>
+        </section>
+
+        <!-- Dirección -->
+        <section class="card">
+            <h2>📍 Dirección de Envío</h2>
+            <div class="grid">
+                <div class="campo">
+                    <label>Departamento</label>
+                    <input
+                        type="text"
+                        [(ngModel)]="cliente.departamento">
+                </div>
+
+                <div class="campo">
+                    <label>Ciudad</label>
+                    <input
+                        type="text"
+                        [(ngModel)]="cliente.ciudad">
+                </div>
+
+                <div class="campo campo-completo">
+                    <label>Dirección</label>
+                    <input
+                        type="text"
+                        [(ngModel)]="cliente.direccion">
+                </div>
+
+                <div class="campo">
+                    <label>Código Postal</label>
+                    <input
+                        type="text"
+                        [(ngModel)]="cliente.codigoPostal">
+                </div>
+            </div>
+        </section>
+
+        <!-- Método de pago -->
+        <section class="card">
+            <h2>💳 Método de Pago</h2>
+            <div class="metodos">
+                <label>
+                    <input
+                        type="radio"
+                        name="pago"
+                        value="Tarjeta de Crédito"
+                        [(ngModel)]="metodoPago">
+                    Tarjeta de Crédito
+                </label>
+
+                <label>
+                    <input
+                        type="radio"
+                        name="pago"
+                        value="Tarjeta Débito"
+                        [(ngModel)]="metodoPago">
+                    Tarjeta Débito
+                </label>
+
+                <label>
+                    <input type="radio" name="pago" value="PSE" [(ngModel)]="metodoPago">
+                    PSE
+                </label>
+
+                <label>
+                    <input type="radio" name="pago" value="Nequi" [(ngModel)]="metodoPago">
+                    Nequi
+                </label>
+
+                <label>
+                    <input type="radio" name="pago" value="Daviplata" [(ngModel)]="metodoPago">
+                    Daviplata
+                </label>
+
+                <label>
+                    <input type="radio" name="pago" value="Contra Entrega"[(ngModel)]="metodoPago">
+                    Contra Entrega
+                </label>
+            </div>
+        </section>
+
+        <!-- Tarjeta -->
+        <section class="card" *ngIf="metodoPago=='Tarjeta de Crédito' || metodoPago=='Tarjeta Débito'">
+            <h2>💳 Información de la Tarjeta</h2>
+            <div class="grid">
+                <div class="campo campo-completo">
+                    <label>Número de Tarjeta</label>
+                    <input
+                        type="text" placeholder="**** **** **** ****" [(ngModel)]="tarjeta.numero">
+                </div>
+
+                <div class="campo">
+                    <label>Nombre del Titular</label>
+                    <input
+                        type="text" [(ngModel)]="tarjeta.nombre">
+                </div>
+
+                <div class="campo">
+                    <label>Fecha de Expiración</label>
+                    <input
+                        type="month" [(ngModel)]="tarjeta.fecha">
+                </div>
+
+                <div class="campo">
+                    <label>CVV</label>
+                    <input
+                        type="password" maxlength="4" [(ngModel)]="tarjeta.cvv">
+                </div>
+            </div>
+        </section>
+
+        <!-- Resumen -->
+        <section class="card">
+            <h2>🧾 Resumen del Pedido</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Producto</th>
+                        <th>Cantidad</th>
+                        <th>Valor</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr *ngFor="let producto of carrito">
+                        <td>{{producto.nombre}}</td>
+                        <td>{{producto.cantidad}}</td>
+                        <td>{{producto.precio}}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="totales">
+                <div>
+                    <span>Subtotal</span>
+                    <strong>{{subtotal}}</strong>
+                </div>
+
+                <div>
+                    <span>IVA</span>
+                    <strong>{{iva}}</strong>
+                </div>
+
+                <div>
+                    <span>Envío</span>
+                    <strong>{{envio}}</strong>
+                </div>
+
+                <div class="total">
+                    <span>Total</span>
+                    <strong>{{total}}</strong>
+                </div>
+            </div>
+        </section>
+
+        <!-- Botones -->
+        <div class="acciones">
+            <button
+                class="btn-volver" (click)="volver()">
+                ← Volver
+            </button>
+
+            <button
+                class="btn-pagar" (click)="confirmarCompra()">
+                Confirmar Compra
+            </button>
+        </div>
+    </div>
+</div>
