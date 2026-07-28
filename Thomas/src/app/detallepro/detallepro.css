@@ -1,0 +1,387 @@
+/*=========================================
+  VARIABLES
+=========================================*/
+
+:root{
+
+    --primary:#2563eb;
+    --primary-hover:#1d4ed8;
+
+    --success:#16a34a;
+    --danger:#dc2626;
+
+    --dark:#0f172a;
+    --text:#475569;
+
+    --white:#ffffff;
+    --light:#f8fafc;
+
+    --border:#e2e8f0;
+
+    --shadow:0 15px 35px rgba(15,23,42,.08);
+
+}
+
+/*=========================================
+RESET
+=========================================*/
+
+*{
+
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+
+}
+
+body{
+
+    background:var(--light);
+
+}
+
+/*=========================================
+CONTENEDOR
+=========================================*/
+
+.detalle-container{
+
+    width:100%;
+    min-height:100vh;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    padding:50px;
+
+}
+
+/*=========================================
+TARJETA
+=========================================*/
+
+.detalle-card{
+
+    width:100%;
+    max-width:1300px;
+
+    background:var(--white);
+
+    border-radius:25px;
+
+    box-shadow:var(--shadow);
+
+    display:grid;
+    grid-template-columns:1fr 1fr;
+
+    overflow:hidden;
+
+}
+
+/*=========================================
+IMAGEN
+=========================================*/
+
+.imagen-container{
+
+    background:#f1f5f9;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    padding:50px;
+
+}
+
+.imagen-container img{
+
+    width:100%;
+    max-width:520px;
+
+    transition:.4s;
+
+}
+
+.imagen-container img:hover{
+
+    transform:scale(1.08);
+
+}
+
+/*=========================================
+INFORMACIÓN
+=========================================*/
+
+.informacion{
+
+    padding:50px;
+
+}
+
+.categoria{
+
+    display:inline-block;
+
+    background:#dbeafe;
+
+    color:var(--primary);
+
+    padding:8px 18px;
+
+    border-radius:30px;
+
+    font-size:14px;
+
+    font-weight:600;
+
+    margin-bottom:20px;
+
+}
+
+.informacion h1{
+
+    font-size:40px;
+
+    color:var(--dark);
+
+    margin-bottom:20px;
+
+}
+
+.descripcion{
+
+    color:var(--text);
+
+    font-size:17px;
+
+    line-height:1.8;
+
+    margin-bottom:30px;
+
+}
+
+.precio{
+
+    font-size:42px;
+
+    font-weight:bold;
+
+    color:var(--primary);
+
+    margin-bottom:25px;
+
+}
+
+/*=========================================
+STOCK
+=========================================*/
+
+.stock{
+
+    display:inline-block;
+
+    padding:10px 18px;
+
+    border-radius:30px;
+
+    color:white;
+
+    font-weight:bold;
+
+    margin-bottom:30px;
+
+}
+
+.disponible{
+
+    background:var(--success);
+
+}
+
+.agotado{
+
+    background:var(--danger);
+
+}
+
+/*=========================================
+ESPECIFICACIONES
+=========================================*/
+
+.especificaciones{
+
+    margin-top:20px;
+
+}
+
+.especificaciones h3{
+
+    color:var(--dark);
+
+    margin-bottom:15px;
+
+    font-size:24px;
+
+}
+
+.especificaciones ul{
+
+    list-style:none;
+
+}
+
+.especificaciones li{
+
+    padding:12px 0;
+
+    border-bottom:1px solid var(--border);
+
+    color:var(--text);
+
+    font-size:16px;
+
+}
+
+.especificaciones li::before{
+
+    content:"✔";
+
+    color:var(--success);
+
+    font-weight:bold;
+
+    margin-right:10px;
+
+}
+
+/*=========================================
+BOTONES
+=========================================*/
+
+.acciones{
+
+    margin-top:40px;
+
+    display:flex;
+
+    gap:20px;
+
+    flex-wrap:wrap;
+
+}
+
+.btn-carrito{
+
+    flex:1;
+
+    padding:16px;
+
+    border:none;
+
+    border-radius:12px;
+
+    background:var(--primary);
+
+    color:white;
+
+    font-size:16px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.btn-carrito:hover{
+
+    background:var(--primary-hover);
+
+    transform:translateY(-3px);
+
+}
+
+.btn-volver{
+
+    padding:16px 35px;
+
+    border:2px solid var(--primary);
+
+    border-radius:12px;
+
+    background:white;
+
+    color:var(--primary);
+
+    font-size:16px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.btn-volver:hover{
+
+    background:var(--primary);
+
+    color:white;
+
+}
+
+/*=========================================
+RESPONSIVE
+=========================================*/
+
+@media(max-width:1000px){
+
+.detalle-card{
+
+    grid-template-columns:1fr;
+
+}
+
+.imagen-container{
+
+    padding:30px;
+
+}
+
+.informacion{
+
+    padding:30px;
+
+}
+
+.informacion h1{
+
+    font-size:30px;
+
+}
+
+.precio{
+
+    font-size:34px;
+
+}
+
+.acciones{
+
+    flex-direction:column;
+
+}
+
+.btn-carrito,
+.btn-volver{
+
+    width:100%;
+
+}
+
+}

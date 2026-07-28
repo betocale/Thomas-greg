@@ -1,0 +1,54 @@
+<link rel="stylesheet" href="detallepro.css">
+
+<main class="detalle-container">
+    <div class="detalle-card" *ngIf="producto">
+
+        <!-- Imagen -->
+        <div class="imagen-container">
+            <img [src]="producto.imagen" [alt]="producto.nombre">
+        </div>
+
+        <!-- Información -->
+        <div class="informacion">
+            <span class="categoria">
+                {{ producto.categoria }}
+            </span>
+
+            <h1>
+                {{ producto.nombre }}
+            </h1>
+
+            <p class="descripcion">
+                {{ producto.descripcion }}
+            </p>
+
+            <div class="precio">
+                {{ producto.precioFormateado }}
+            </div>
+
+            <div class="stock" [class.disponible]="producto.disponible" [class.agotado]="!producto.disponible">
+                {{ producto.disponible ? 'Disponible' : 'Agotado' }}
+            </div>
+
+            <div class="especificaciones">
+                <h3>Especificaciones</h3>
+                <ul>
+                    <li *ngFor="let especificacion of producto.especificaciones">
+                        {{ especificacion }}
+                    </li>
+                </ul>
+            </div>
+
+            <div class="acciones">
+                <button class="btn-carrito" [disabled]="!producto.disponible" (click)="agregarCarrito()">
+                    Agregar al carrito
+                </button>
+
+                <button class="btn-volver" (click)="volver()">
+                    ← Volver
+                </button>
+            </div>
+        </div>
+
+    </div>
+</main>
