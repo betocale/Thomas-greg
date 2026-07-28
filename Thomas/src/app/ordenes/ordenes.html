@@ -1,0 +1,190 @@
+<link rel="stylesheet" href="ordenes.css">
+
+<div class="ordenes-container">
+
+    <!-- Encabezado -->
+    <div class="header">
+
+        <div>
+            <h1>📦 Órdenes y Envíos</h1>
+            <p>Administración de pedidos de Beto Shop</p>
+        </div>
+
+        <button
+            class="btn-nueva"
+            (click)="nuevaOrden()">
+            + Nueva Orden
+        </button>
+
+    </div>
+
+    <!-- Tarjetas -->
+    <div class="cards">
+
+        <div class="card azul">
+            <h3>Total Órdenes</h3>
+            <span>{{ totalOrdenes }}</span>
+        </div>
+
+        <div class="card amarillo">
+            <h3>Pendientes</h3>
+            <span>{{ pendientes }}</span>
+        </div>
+
+        <div class="card morado">
+            <h3>Preparando</h3>
+            <span>{{ preparando }}</span>
+        </div>
+
+        <div class="card verde">
+            <h3>Entregadas</h3>
+            <span>{{ entregadas }}</span>
+        </div>
+
+        <div class="card rojo">
+            <h3>Canceladas</h3>
+            <span>{{ canceladas }}</span>
+        </div>
+
+        <div class="card celeste">
+            <h3>Ingresos</h3>
+            <span>{{ ingresos | currency:'COP':'symbol':'1.0-0' }}</span>
+        </div>
+
+    </div>
+
+    <!-- Filtros -->
+    <div class="filtros">
+
+        <input
+            type="text"
+            placeholder="Buscar cliente, pedido o guía..."
+            [(ngModel)]="textoBusqueda">
+
+        <select [(ngModel)]="estadoFiltro">
+
+            <option value="">Todos los estados</option>
+            <option>Pendiente</option>
+            <option>Pagado</option>
+            <option>Preparando</option>
+            <option>Enviado</option>
+            <option>En camino</option>
+            <option>Entregado</option>
+            <option>Cancelado</option>
+
+        </select>
+
+    </div>
+
+    <!-- Tabla -->
+    <table>
+
+        <thead>
+
+            <tr>
+
+                <th># Orden</th>
+                <th>Cliente</th>
+                <th>Producto</th>
+                <th>Fecha</th>
+                <th>Total</th>
+                <th>Pago</th>
+                <th>Transportadora</th>
+                <th>Guía</th>
+                <th>Estado</th>
+                <th>Acciones</th>
+
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+            <tr *ngFor="let orden of ordenesFiltradas">
+
+                <td>{{ orden.id }}</td>
+
+                <td>{{ orden.cliente }}</td>
+
+                <td>{{ orden.producto }}</td>
+
+                <td>{{ orden.fecha }}</td>
+
+                <td>{{ orden.total | currency:'COP':'symbol':'1.0-0' }}</td>
+
+                <td>{{ orden.metodoPago }}</td>
+
+                <td>{{ orden.transportadora }}</td>
+
+                <td>{{ orden.guia }}</td>
+
+                <td>
+
+                    <span
+                        class="estado"
+                        [ngClass]="{
+                            pendiente: orden.estado==='Pendiente',
+                            pagado: orden.estado==='Pagado',
+                            preparando: orden.estado==='Preparando',
+                            enviado: orden.estado==='Enviado',
+                            camino: orden.estado==='En camino',
+                            entregado: orden.estado==='Entregado',
+                            cancelado: orden.estado==='Cancelado'
+                        }">
+
+                        {{ orden.estado }}
+
+                    </span>
+
+                </td>
+
+                <td>
+
+                    <button
+                        class="btn-ver"
+                        (click)="verOrden(orden)">
+                        Ver
+                    </button>
+
+                    <button
+                        class="btn-editar"
+                        (click)="editarOrden(orden)">
+                        Editar
+                    </button>
+
+                    <button
+                        class="btn-envio"
+                        (click)="actualizarEstado(orden)">
+                        Estado
+                    </button>
+
+                    <button
+                        class="btn-eliminar"
+                        (click)="eliminarOrden(orden.id)">
+                        Eliminar
+                    </button>
+
+                </td>
+
+            </tr>
+
+        </tbody>
+
+    </table>
+
+    <!-- Sin resultados -->
+    <div
+        class="sin-datos"
+        *ngIf="ordenesFiltradas.length===0">
+
+        <h2>No existen órdenes registradas</h2>
+
+        <p>
+            Intenta cambiar el filtro de búsqueda.
+        </p>
+
+    </div>
+
+</div>
+
+<router-outlet></router-outlet>

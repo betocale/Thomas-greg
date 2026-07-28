@@ -1,0 +1,164 @@
+<link rel="stylesheet" href="perfil.css">
+
+<div class="perfil-container">
+
+    <div class="perfil-card">
+
+        <div class="perfil-header">
+
+            <img
+                src="https://i.pravatar.cc/250?img=12"
+                alt="Usuario"
+                class="foto-perfil">
+
+            <h1>{{usuario.nombre}}</h1>
+
+            <p>{{usuario.rol}}</p>
+
+        </div>
+
+        <div class="perfil-body">
+
+            <div class="campo">
+
+                <label>Nombre Completo</label>
+
+                <input
+                    type="text"
+                    [(ngModel)]="usuario.nombre">
+
+            </div>
+
+            <div class="campo">
+
+                <label>Correo Electrónico</label>
+
+                <input
+                    type="email"
+                    [(ngModel)]="usuario.correo">
+
+            </div>
+
+            <div class="campo">
+
+                <label>Teléfono</label>
+
+                <input
+                    type="text"
+                    [(ngModel)]="usuario.telefono">
+
+            </div>
+
+            <div class="campo">
+
+                <label>Documento</label>
+
+                <input
+                    type="text"
+                    [(ngModel)]="usuario.documento">
+
+            </div>
+
+            <div class="campo">
+
+                <label>Ciudad</label>
+
+                <input
+                    type="text"
+                    [(ngModel)]="usuario.ciudad">
+
+            </div>
+
+            <div class="campo">
+
+                <label>Dirección</label>
+
+                <input
+                    type="text"
+                    [(ngModel)]="usuario.direccion">
+
+            </div>
+
+            <div class="campo">
+
+                <label>Fecha de Nacimiento</label>
+
+                <input
+                    type="date"
+                    [(ngModel)]="usuario.fechaNacimiento">
+
+            </div>
+
+            <div class="campo">
+
+                <label>Contraseña</label>
+
+                <input
+                    type="password"
+                    [(ngModel)]="usuario.password">
+
+            </div>
+
+        </div>
+
+        <div class="acciones">
+
+            <button
+                class="btn-volver"
+                (click)="volver()">
+
+                ← Volver
+
+            </button>
+
+            <button
+                class="btn-guardar"
+                (click)="guardarCambios()">
+
+                Guardar Cambios
+
+            </button>
+
+        </div>
+
+    </div>
+
+    <div class="estadisticas">
+
+        <div class="card">
+
+            <h2>🛒 Compras</h2>
+
+            <h1>28</h1>
+
+        </div>
+
+        <div class="card">
+
+            <h2>📦 Pedidos</h2>
+
+            <h1>14</h1>
+
+        </div>
+
+        <div class="card">
+
+            <h2>❤️ Favoritos</h2>
+
+            <h1>52</h1>
+
+        </div>
+
+        <div class="card">
+
+            <h2>⭐ Puntos</h2>
+
+            <h1>1.250</h1>
+
+        </div>
+
+    </div>
+
+</div>
+
+<router-outlet></router-outlet>

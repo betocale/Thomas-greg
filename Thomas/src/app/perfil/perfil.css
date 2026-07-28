@@ -1,0 +1,416 @@
+/*==============================
+    VARIABLES
+==============================*/
+
+:root{
+    --primary:#2563eb;
+    --primary-hover:#1d4ed8;
+    --success:#16a34a;
+    --danger:#dc2626;
+    --warning:#f59e0b;
+    --dark:#0f172a;
+    --text:#334155;
+    --light:#f8fafc;
+    --white:#ffffff;
+    --border:#e2e8f0;
+    --shadow:0 15px 40px rgba(15,23,42,.10);
+    --radius:18px;
+}
+
+/*==============================
+    GENERAL
+==============================*/
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Segoe UI',sans-serif;
+    background:#f1f5f9;
+}
+
+.perfil-container{
+
+    max-width:1450px;
+
+    margin:40px auto;
+
+    display:grid;
+
+    grid-template-columns:2fr 1fr;
+
+    gap:35px;
+
+    padding:20px;
+
+}
+
+/*==============================
+    CARD PERFIL
+==============================*/
+
+.perfil-card{
+
+    background:var(--white);
+
+    border-radius:var(--radius);
+
+    overflow:hidden;
+
+    box-shadow:var(--shadow);
+
+}
+
+/*==============================
+    HEADER
+==============================*/
+
+.perfil-header{
+
+    background:linear-gradient(135deg,#2563eb,#0ea5e9);
+
+    color:white;
+
+    text-align:center;
+
+    padding:45px;
+
+}
+
+.foto-perfil{
+
+    width:170px;
+
+    height:170px;
+
+    border-radius:50%;
+
+    border:6px solid white;
+
+    object-fit:cover;
+
+    margin-bottom:20px;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.25);
+
+}
+
+.perfil-header h1{
+
+    font-size:34px;
+
+    margin-bottom:10px;
+
+}
+
+.perfil-header p{
+
+    font-size:18px;
+
+    opacity:.9;
+
+}
+
+/*==============================
+    FORMULARIO
+==============================*/
+
+.perfil-body{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+
+    gap:25px;
+
+    padding:35px;
+
+}
+
+.campo{
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+.campo label{
+
+    margin-bottom:8px;
+
+    font-weight:700;
+
+    color:var(--dark);
+
+}
+
+.campo input{
+
+    padding:15px;
+
+    border:2px solid var(--border);
+
+    border-radius:12px;
+
+    font-size:15px;
+
+    transition:.3s;
+
+}
+
+.campo input:focus{
+
+    outline:none;
+
+    border-color:var(--primary);
+
+    box-shadow:0 0 0 4px rgba(37,99,235,.15);
+
+}
+
+/*==============================
+    BOTONES
+==============================*/
+
+.acciones{
+
+    display:flex;
+
+    justify-content:flex-end;
+
+    gap:20px;
+
+    padding:30px;
+
+    border-top:1px solid var(--border);
+
+}
+
+.btn-volver{
+
+    padding:14px 28px;
+
+    background:white;
+
+    color:var(--primary);
+
+    border:2px solid var(--primary);
+
+    border-radius:12px;
+
+    cursor:pointer;
+
+    font-weight:bold;
+
+    transition:.3s;
+
+}
+
+.btn-volver:hover{
+
+    background:var(--primary);
+
+    color:white;
+
+}
+
+.btn-guardar{
+
+    padding:14px 28px;
+
+    background:var(--success);
+
+    color:white;
+
+    border:none;
+
+    border-radius:12px;
+
+    cursor:pointer;
+
+    font-weight:bold;
+
+    transition:.3s;
+
+}
+
+.btn-guardar:hover{
+
+    background:#15803d;
+
+    transform:translateY(-3px);
+
+}
+
+/*==============================
+    ESTADISTICAS
+==============================*/
+
+.estadisticas{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:25px;
+
+}
+
+.card{
+
+    background:white;
+
+    border-radius:18px;
+
+    padding:30px;
+
+    text-align:center;
+
+    box-shadow:var(--shadow);
+
+    transition:.3s;
+
+}
+
+.card:hover{
+
+    transform:translateY(-5px);
+
+}
+
+.card h2{
+
+    color:#64748b;
+
+    margin-bottom:20px;
+
+    font-size:22px;
+
+}
+
+.card h1{
+
+    color:var(--primary);
+
+    font-size:42px;
+
+}
+
+/*==============================
+    INFORMACION EXTRA
+==============================*/
+
+.card::after{
+
+    content:"";
+
+    display:block;
+
+    margin:20px auto 0;
+
+    width:60px;
+
+    height:5px;
+
+    background:var(--primary);
+
+    border-radius:20px;
+
+}
+
+/*==============================
+    RESPONSIVE
+==============================*/
+
+@media(max-width:1200px){
+
+.perfil-container{
+
+grid-template-columns:1fr;
+
+}
+
+.estadisticas{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+
+}
+
+}
+
+@media(max-width:768px){
+
+.perfil-body{
+
+grid-template-columns:1fr;
+
+}
+
+.acciones{
+
+flex-direction:column;
+
+}
+
+.btn-volver,
+.btn-guardar{
+
+width:100%;
+
+}
+
+.foto-perfil{
+
+width:130px;
+
+height:130px;
+
+}
+
+.perfil-header h1{
+
+font-size:28px;
+
+}
+
+.card h1{
+
+font-size:34px;
+
+}
+
+}
+
+@media(max-width:480px){
+
+.perfil-container{
+
+padding:10px;
+
+}
+
+.perfil-header{
+
+padding:30px;
+
+}
+
+.perfil-body{
+
+padding:20px;
+
+}
+
+.card{
+
+padding:20px;
+
+}
+
+}

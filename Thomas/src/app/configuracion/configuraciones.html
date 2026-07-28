@@ -1,0 +1,294 @@
+<link rel="stylesheet" href="configuraciones.css">
+
+<div class="configuracion-container">
+
+    <!-- Encabezado -->
+    <div class="header">
+
+        <div>
+
+            <h1>⚙ Configuración</h1>
+
+            <p>Administra las preferencias del sistema Beto Shop.</p>
+
+        </div>
+
+        <button
+            class="btn-guardar"
+            (click)="guardarConfiguracion()">
+
+            💾 Guardar Cambios
+
+        </button>
+
+    </div>
+
+    <!-- Configuración General -->
+    <div class="card">
+
+        <h2>🌐 Configuración General</h2>
+
+        <div class="grid">
+
+            <div class="campo">
+
+                <label>Nombre de la Tienda</label>
+
+                <input
+                    type="text"
+                    [(ngModel)]="configuracion.nombreTienda">
+
+            </div>
+
+            <div class="campo">
+
+                <label>Correo Electrónico</label>
+
+                <input
+                    type="email"
+                    [(ngModel)]="configuracion.correo">
+
+            </div>
+
+            <div class="campo">
+
+                <label>Teléfono</label>
+
+                <input
+                    type="text"
+                    [(ngModel)]="configuracion.telefono">
+
+            </div>
+
+            <div class="campo">
+
+                <label>NIT</label>
+
+                <input
+                    type="text"
+                    [(ngModel)]="configuracion.nit">
+
+            </div>
+
+            <div class="campo campo-completo">
+
+                <label>Dirección</label>
+
+                <input
+                    type="text"
+                    [(ngModel)]="configuracion.direccion">
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Sistema -->
+    <div class="card">
+
+        <h2>🖥 Configuración del Sistema</h2>
+
+        <div class="grid">
+
+            <div class="campo">
+
+                <label>Idioma</label>
+
+                <select [(ngModel)]="configuracion.idioma">
+
+                    <option>Español</option>
+                    <option>English</option>
+
+                </select>
+
+            </div>
+
+            <div class="campo">
+
+                <label>Moneda</label>
+
+                <select [(ngModel)]="configuracion.moneda">
+
+                    <option>Peso Colombiano (COP)</option>
+                    <option>Dólar (USD)</option>
+                    <option>Euro (EUR)</option>
+
+                </select>
+
+            </div>
+
+            <div class="campo">
+
+                <label>Zona Horaria</label>
+
+                <select [(ngModel)]="configuracion.zonaHoraria">
+
+                    <option>América/Bogotá</option>
+                    <option>América/México</option>
+                    <option>Europa/Madrid</option>
+
+                </select>
+
+            </div>
+
+            <div class="campo">
+
+                <label>Impuesto IVA (%)</label>
+
+                <input
+                    type="number"
+                    [(ngModel)]="configuracion.iva">
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Seguridad -->
+    <div class="card">
+
+        <h2>🔒 Seguridad</h2>
+
+        <div class="opciones">
+
+            <label>
+
+                <input
+                    type="checkbox"
+                    [(ngModel)]="configuracion.autenticacionDosPasos">
+
+                Activar autenticación en dos pasos
+
+            </label>
+
+            <label>
+
+                <input
+                    type="checkbox"
+                    [(ngModel)]="configuracion.notificaciones">
+
+                Recibir notificaciones por correo
+
+            </label>
+
+            <label>
+
+                <input
+                    type="checkbox"
+                    [(ngModel)]="configuracion.backupAutomatico">
+
+                Copias de seguridad automáticas
+
+            </label>
+
+            <label>
+
+                <input
+                    type="checkbox"
+                    [(ngModel)]="configuracion.modoOscuro">
+
+                Activar modo oscuro
+
+            </label>
+
+        </div>
+
+    </div>
+
+    <!-- Apariencia -->
+    <div class="card">
+
+        <h2>🎨 Apariencia</h2>
+
+        <div class="grid">
+
+            <div class="campo">
+
+                <label>Color Principal</label>
+
+                <input
+                    type="color"
+                    [(ngModel)]="configuracion.colorPrincipal">
+
+            </div>
+
+            <div class="campo">
+
+                <label>Color Secundario</label>
+
+                <input
+                    type="color"
+                    [(ngModel)]="configuracion.colorSecundario">
+
+            </div>
+
+            <div class="campo">
+
+                <label>Logo de la Empresa</label>
+
+                <input
+                    type="file">
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Base de datos -->
+    <div class="card">
+
+        <h2>🗄 Base de Datos</h2>
+
+        <div class="acciones">
+
+            <button
+                class="btn-exportar"
+                (click)="exportarBaseDatos()">
+
+                📥 Exportar Base de Datos
+
+            </button>
+
+            <button
+                class="btn-importar"
+                (click)="importarBaseDatos()">
+
+                📤 Importar Base de Datos
+
+            </button>
+
+            <button
+                class="btn-limpiar"
+                (click)="limpiarCache()">
+
+                🧹 Limpiar Caché
+
+            </button>
+
+        </div>
+
+    </div>
+
+    <!-- Acciones -->
+    <div class="footer">
+
+        <button
+            class="btn-volver"
+            (click)="volver()">
+
+            ← Volver
+
+        </button>
+
+        <button
+            class="btn-guardar"
+            (click)="guardarConfiguracion()">
+
+            Guardar Configuración
+
+        </button>
+    </div>
+</div>
