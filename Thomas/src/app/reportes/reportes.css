@@ -1,0 +1,368 @@
+/*=========================================
+REPORTES
+=========================================*/
+
+:root{
+    --primary:#2563eb;
+    --primary-hover:#1d4ed8;
+    --success:#16a34a;
+    --warning:#f59e0b;
+    --danger:#dc2626;
+    --purple:#7c3aed;
+    --info:#0891b2;
+    --dark:#0f172a;
+    --text:#475569;
+    --light:#f8fafc;
+    --white:#ffffff;
+    --border:#e2e8f0;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;
+}
+
+body{
+    background:#f1f5f9;
+}
+
+/*=========================
+CONTENEDOR
+=========================*/
+
+.reportes-container{
+    max-width:1600px;
+    margin:auto;
+    padding:35px;
+}
+
+/*=========================
+HEADER
+=========================*/
+
+.header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:30px;
+    flex-wrap:wrap;
+    gap:20px;
+}
+
+.header h1{
+    color:var(--dark);
+    font-size:34px;
+    margin-bottom:8px;
+}
+
+.header p{
+    color:var(--text);
+}
+
+.acciones-header{
+    display:flex;
+    gap:12px;
+    flex-wrap:wrap;
+}
+
+.acciones-header button{
+    border:none;
+    cursor:pointer;
+    padding:13px 22px;
+    border-radius:10px;
+    color:#fff;
+    font-weight:600;
+    transition:.3s;
+}
+
+.btn-pdf{
+    background:#dc2626;
+}
+
+.btn-pdf:hover{
+    background:#b91c1c;
+}
+
+.btn-excel{
+    background:#16a34a;
+}
+
+.btn-excel:hover{
+    background:#15803d;
+}
+
+.btn-imprimir{
+    background:#2563eb;
+}
+
+.btn-imprimir:hover{
+    background:#1d4ed8;
+}
+
+/*=========================
+CARDS
+=========================*/
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:20px;
+    margin-bottom:35px;
+}
+
+.card{
+    color:#fff;
+    padding:22px;
+    border-radius:18px;
+    box-shadow:0 10px 25px rgba(0,0,0,.15);
+}
+
+.card h3{
+    font-size:17px;
+    margin-bottom:15px;
+    font-weight:500;
+}
+
+.card span{
+    font-size:30px;
+    font-weight:bold;
+}
+
+.azul{
+    background:#2563eb;
+}
+
+.verde{
+    background:#16a34a;
+}
+
+.amarillo{
+    background:#f59e0b;
+}
+
+.morado{
+    background:#7c3aed;
+}
+
+.rojo{
+    background:#dc2626;
+}
+
+.celeste{
+    background:#0891b2;
+}
+
+/*=========================
+FILTROS
+=========================*/
+
+.filtros{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:20px;
+    margin-bottom:35px;
+}
+
+.campo{
+    display:flex;
+    flex-direction:column;
+}
+
+.campo label{
+    margin-bottom:8px;
+    font-weight:600;
+    color:var(--dark);
+}
+
+.campo input,
+.campo select{
+    padding:13px;
+    border:2px solid var(--border);
+    border-radius:10px;
+    outline:none;
+    transition:.3s;
+    background:#fff;
+}
+
+.campo input:focus,
+.campo select:focus{
+    border-color:var(--primary);
+}
+
+/*=========================
+TABLAS
+=========================*/
+
+.top-productos,
+.tabla-reportes{
+    margin-top:30px;
+    margin-bottom:35px;
+}
+
+.top-productos h2,
+.tabla-reportes h2{
+    margin-bottom:15px;
+    color:var(--dark);
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    background:#fff;
+    border-radius:15px;
+    overflow:hidden;
+    box-shadow:0 8px 20px rgba(0,0,0,.08);
+}
+
+thead{
+    background:var(--primary);
+    color:white;
+}
+
+thead th{
+    padding:16px;
+    text-align:left;
+    font-size:14px;
+}
+
+tbody td{
+    padding:15px;
+    border-bottom:1px solid #edf2f7;
+    color:#334155;
+}
+
+tbody tr:hover{
+    background:#f8fafc;
+}
+
+/*=========================
+ESTADOS
+=========================*/
+
+.estado{
+    display:inline-block;
+    padding:7px 16px;
+    border-radius:30px;
+    color:#fff;
+    font-size:13px;
+    font-weight:600;
+}
+
+.pagado{
+    background:#16a34a;
+}
+
+.pendiente{
+    background:#f59e0b;
+}
+
+.cancelado{
+    background:#dc2626;
+}
+
+/*=========================
+BOTONES
+=========================*/
+
+.btn-ver{
+    border:none;
+    cursor:pointer;
+    background:#2563eb;
+    color:#fff;
+    padding:8px 16px;
+    border-radius:8px;
+    transition:.3s;
+}
+
+.btn-ver:hover{
+    background:#1d4ed8;
+}
+
+/*=========================
+SIN DATOS
+=========================*/
+
+.sin-datos{
+    margin-top:40px;
+    text-align:center;
+    background:#fff;
+    padding:45px;
+    border-radius:15px;
+    box-shadow:0 8px 18px rgba(0,0,0,.08);
+}
+
+.sin-datos h2{
+    color:var(--dark);
+    margin-bottom:10px;
+}
+
+.sin-datos p{
+    color:var(--text);
+}
+
+/*=========================
+RESPONSIVE
+=========================*/
+
+@media(max-width:1200px){
+
+    .reportes-container{
+        overflow-x:auto;
+    }
+
+    table{
+        min-width:1000px;
+    }
+
+}
+
+@media(max-width:768px){
+
+    .header{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    .acciones-header{
+        width:100%;
+    }
+
+    .acciones-header button{
+        flex:1;
+    }
+
+    .cards{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+}
+
+@media(max-width:600px){
+
+    .cards{
+        grid-template-columns:1fr;
+    }
+
+    .reportes-container{
+        padding:20px;
+    }
+
+    .header h1{
+        font-size:28px;
+    }
+
+    .filtros{
+        grid-template-columns:1fr;
+    }
+
+    .acciones-header{
+        flex-direction:column;
+    }
+
+    .acciones-header button{
+        width:100%;
+    }
+
+}

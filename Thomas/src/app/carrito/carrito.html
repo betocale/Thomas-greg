@@ -1,0 +1,169 @@
+<link rel="stylesheet" href="carrito.css">
+
+<div class="carrito-container">
+
+  <!-- ENCABEZADO -->
+  <div class="carrito-header">
+
+    <div>
+      <h1>🛒 Carrito de Compras</h1>
+      <p>Revisa tus productos antes de finalizar tu compra</p>
+    </div>
+
+    <button class="btn-seguir" routerLink="/productos">
+      ← Seguir comprando
+    </button>
+  </div>
+
+  <!-- CARRITO VACIO -->
+  <div class="carrito-vacio" *ngIf="carrito.length === 0">
+    <div class="icono">
+      🛒
+    </div>
+    <h2>Tu carrito está vacío</h2>
+    <p>
+      Agrega productos para comenzar tu compra.
+    </p>
+
+    <button 
+    class="btn-primary"
+    routerLink="/productos">
+      Ver productos
+    </button>
+  </div>
+  <!-- CONTENIDO CARRITO -->
+
+  <div class="carrito-grid" *ngIf="carrito.length > 0">
+    <!-- PRODUCTOS -->
+    <section class="productos-carrito">
+      <article 
+      class="producto-item"
+      *ngFor="let producto of carrito">
+
+        <img 
+        [src]="producto.imagen"
+        [alt]="producto.nombre">
+
+        <div class="producto-info">
+          <h3>
+            {{producto.nombre}}
+          </h3>
+
+          <p class="categoria">
+            {{producto.categoria}}
+          </p>
+
+          <span class="precio">
+            {{producto.precio | currency:'COP':'symbol':'1.0-0'}}
+          </span>
+
+          <div class="cantidad">
+
+            <button 
+            (click)="disminuirCantidad(producto)">
+              -
+            </button>
+
+            <span>
+              {{producto.cantidad}}
+            </span>
+
+            <button 
+            (click)="aumentarCantidad(producto)">
+              +
+            </button>
+          </div>
+        </div>
+
+        <div class="acciones">
+
+          <span class="subtotal">
+            {{
+            producto.precio * producto.cantidad
+            | currency:'COP':'symbol':'1.0-0'
+            }}
+          </span>
+
+          <button
+          class="btn-eliminar"
+          (click)="eliminarProducto(producto.id)">
+            🗑 Eliminar
+          </button>
+        </div>
+      </article>
+    </section>
+
+    <!-- RESUMEN COMPRA -->
+
+    <aside class="resumen">
+
+      <h2>
+        Resumen del pedido
+      </h2>
+
+      <div class="linea">
+
+        <span>
+          Productos
+        </span>
+
+        <strong>
+          {{cantidadProductos}}
+        </strong>
+      </div>
+
+      <div class="linea">
+        <span>
+          Subtotal
+        </span>
+
+        <strong>
+          {{
+          subtotal 
+          | currency:'COP':'symbol':'1.0-0'
+          }}
+        </strong>
+      </div>
+
+      <div class="linea descuento">
+        <span>
+          Descuento
+        </span>
+
+        <strong>
+          {{
+          descuento
+          | currency:'COP':'symbol':'1.0-0'
+          }}
+        </strong>
+      </div>
+
+      <hr>
+      <div class="total">
+
+        <span>
+          Total
+        </span>
+
+        <strong>
+          {{
+          total
+          | currency:'COP':'symbol':'1.0-0'
+          }}
+        </strong>
+      </div>
+
+      <button
+      class="btn-comprar"
+      routerLink="/checkout">
+        💳 Finalizar compra
+      </button>
+
+      <button
+      class="btn-vaciar"
+      (click)="vaciarCarrito()">
+        Vaciar carrito
+      </button>
+    </aside>
+  </div>
+</div>

@@ -1,0 +1,334 @@
+/* ==========================================
+   BETO SHOP - CARRITO DE COMPRAS
+========================================== */
+
+:root {
+    --primary: #2563eb;
+    --primary-hover: #1d4ed8;
+    --secondary: #06b6d4;
+    --success: #16a34a;
+    --danger: #dc2626;
+    --warning: #f59e0b;
+
+    --dark: #0f172a;
+    --text: #334155;
+
+    --light: #f8fafc;
+    --white: #ffffff;
+
+    --border: #e2e8f0;
+
+    --shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}
+
+/* ==========================================
+   CONTENEDOR PRINCIPAL
+========================================== */
+
+.carrito-container {
+    width: 90%;
+    max-width: 1300px;
+    margin: 40px auto;
+    color: var(--text);
+}
+
+/* ==========================================
+   HEADER
+========================================== */
+
+.carrito-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 35px;
+}
+
+.carrito-header h1 {
+    font-size: 36px;
+    color: var(--dark);
+    margin-bottom: 8px;
+}
+
+.carrito-header p {
+    color: #64748b;
+    font-size: 16px;
+}
+
+/* BOTONES */
+button {
+    cursor: pointer;
+    border: none;
+    transition: 0.3s;
+    font-weight: 600;
+}
+
+.btn-seguir {
+    background: var(--white);
+    border: 1px solid var(--border);
+    padding: 12px 22px;
+    border-radius: 10px;
+    color: var(--primary);
+}
+
+.btn-seguir:hover {
+    background: var(--primary);
+    color: white;
+}
+
+/* ==========================================
+   CARRITO VACIO
+========================================== */
+
+.carrito-vacio {
+    background: white;
+    padding: 60px 20px;
+    text-align: center;
+    border-radius: 20px;
+    box-shadow: var(--shadow);
+}
+
+.carrito-vacio .icono {
+    font-size: 70px;
+}
+
+.carrito-vacio h2 {
+    color: var(--dark);
+}
+
+.btn-primary {
+    background: var(--primary);
+    color: white;
+    padding: 14px 30px;
+    border-radius: 12px;
+}
+
+.btn-primary:hover {
+    background: var(--primary-hover);
+}
+
+/* ==========================================
+   GRID PRINCIPAL
+========================================== */
+
+.carrito-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 30px;
+}
+
+/* ==========================================
+   PRODUCTOS
+========================================== */
+
+.productos-carrito {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.producto-item {
+    background: white;
+    border-radius: 18px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border);
+}
+
+.producto-item img {
+    width: 130px;
+    height: 130px;
+    object-fit: cover;
+    border-radius: 15px;
+}
+
+.producto-info {
+    flex: 1;
+}
+
+.producto-info h3 {
+    color: var(--dark);
+    font-size: 20px;
+    margin-bottom: 8px;
+}
+
+.categoria {
+    color: #64748b;
+    margin-bottom: 10px;
+}
+
+.precio {
+    font-size: 20px;
+    font-weight: bold;
+    color: var(--primary);
+}
+
+/* ==========================================
+   CANTIDAD
+========================================== */
+
+.cantidad {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.cantidad button {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background: #e2e8f0;
+    font-size: 20px;
+}
+
+.cantidad button:hover {
+    background: var(--primary);
+    color: white;
+}
+
+.cantidad span {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* ==========================================
+   ACCIONES PRODUCTO
+========================================== */
+
+.acciones {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 20px;
+}
+
+.subtotal {
+    font-size: 20px;
+    font-weight: bold;
+    color: var(--dark);
+}
+
+.btn-eliminar {
+    background: #fee2e2;
+    color: var(--danger);
+    padding: 10px 15px;
+    border-radius: 10px;
+}
+
+.btn-eliminar:hover {
+    background: var(--danger);
+    color: white;
+}
+
+/* ==========================================
+   RESUMEN
+========================================== */
+
+.resumen {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    height: max-content;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border);
+}
+
+.resumen h2 {
+    color: var(--dark);
+    margin-bottom: 25px;
+}
+
+.linea {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 18px;
+    font-size: 16px;
+}
+
+.linea strong {
+    color: var(--dark);
+}
+
+.descuento strong {
+    color: var(--success);
+}
+
+hr {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 20px 0;
+}
+
+.total {
+    display: flex;
+    justify-content: space-between;
+    font-size: 22px;
+    margin-bottom: 25px;
+}
+
+.total strong {
+    color: var(--primary);
+}
+
+/* BOTON COMPRA */
+
+.btn-comprar {
+    width: 100%;
+    padding: 16px;
+    border-radius: 12px;
+    background: var(--success);
+    color: white;
+    font-size: 17px;
+    margin-bottom: 15px;
+}
+
+.btn-comprar:hover {
+    background: #15803d;
+}
+
+.btn-vaciar {
+    width: 100%;
+    padding: 14px;
+    border-radius: 12px;
+    background: #f1f5f9;
+    color: var(--danger);
+}
+
+.btn-vaciar:hover {
+    background: #fee2e2;
+}
+
+/* ==========================================
+   RESPONSIVE
+========================================== */
+
+@media (max-width: 900px) {
+    .carrito-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .carrito-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
+}
+
+@media (max-width: 600px) {
+    .producto-item {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .producto-item img {
+        width: 180px;
+        height: 180px;
+    }
+
+    .acciones {
+        align-items: center;
+    }
+}

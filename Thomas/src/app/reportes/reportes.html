@@ -1,0 +1,175 @@
+<link rel="stylesheet" href="reportes.css">
+<div class="reportes-container">
+    <!-- Encabezado -->
+    <div class="header">
+        <div>
+            <h1>📊 Reportes</h1>
+            <p>Panel de estadísticas y análisis de Beto Shop</p>
+        </div>
+        <div class="acciones-header">
+
+            <button class="btn-pdf" (click)="exportarPDF()">
+                📄 Exportar PDF
+            </button>
+
+            <button class="btn-excel" (click)="exportarExcel()">
+                📗 Exportar Excel
+            </button>
+
+            <button class="btn-imprimir" (click)="imprimirReporte()">
+                🖨 Imprimir
+            </button>
+        </div>
+    </div>
+
+    <!-- Tarjetas -->
+    <section class="cards">
+        <div class="card azul">
+            <h3>Total Ventas</h3>
+            <span>{{ totalVentas | currency:'COP':'symbol':'1.0-0' }}</span>
+        </div>
+        <div class="card verde">
+            <h3>Pedidos</h3>
+            <span>{{ totalPedidos }}</span>
+        </div>
+
+        <div class="card amarillo">
+            <h3>Clientes</h3>
+            <span>{{ totalClientes }}</span>
+        </div>
+
+        <div class="card morado">
+            <h3>Productos Vendidos</h3>
+            <span>{{ totalProductos }}</span>
+        </div>
+
+        <div class="card rojo">
+            <h3>Ganancia</h3>
+            <span>{{ ganancias | currency:'COP':'symbol':'1.0-0' }}</span>
+        </div>
+
+        <div class="card celeste">
+            <h3>Promedio Venta</h3>
+            <span>{{ promedioVenta | currency:'COP':'symbol':'1.0-0' }}</span>
+        </div>
+    </section>
+
+    <!-- Filtros -->
+    <section class="filtros">
+        <div class="campo">
+            <label>Desde</label>
+            <input
+                type="date"
+                [(ngModel)]="fechaInicio">
+        </div>
+
+        <div class="campo">
+            <label>Hasta</label>
+            <input
+                type="date"
+                [(ngModel)]="fechaFin">
+        </div>
+
+        <div class="campo">
+            <label>Buscar</label>
+            <input
+                type="text"
+                placeholder="Cliente o producto..."
+                [(ngModel)]="textoBusqueda">
+        </div>
+
+        <div class="campo">
+            <label>Estado</label>
+            <select [(ngModel)]="estadoSeleccionado">
+                <option value="">Todos</option>
+                <option>Pagado</option>
+                <option>Pendiente</option>
+                <option>Cancelado</option>
+            </select>
+        </div>
+    </section>
+
+    <!-- Productos más vendidos -->
+    <section class="top-productos">
+        <h2>🏆 Top Productos Más Vendidos</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Posición</th>
+                    <th>Producto</th>
+                    <th>Ventas</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr *ngFor="let producto of topProductos; let i = index">
+                    <td>#{{ i + 1 }}</td>
+                    <td>{{ producto.nombre }}</td>
+                    <td>{{ producto.cantidad }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- Tabla -->
+    <section class="tabla-reportes">
+        <h2>📋 Historial de Ventas</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Fecha</th>
+                    <th>Cliente</th>
+                    <th>Producto</th>
+                    <th>Cantidad</th>
+                    <th>Total</th>
+                    <th>Estado</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr *ngFor="let venta of ventasFiltradas">
+                    <td>{{ venta.id }}</td>
+                    <td>{{ venta.fecha }}</td>
+                    <td>{{ venta.cliente }}</td>
+                    <td>{{ venta.producto }}</td>
+                    <td>{{ venta.cantidad }}</td>
+                    <td>{{ venta.total | currency:'COP':'symbol':'1.0-0' }}</td>
+                    <td>
+                        <span
+                            class="estado"
+                            [ngClass]="{
+                                pagado: venta.estado=='Pagado',
+                                pendiente: venta.estado=='Pendiente',
+                                cancelado: venta.estado=='Cancelado'
+                            }">
+                            {{ venta.estado }}
+                        </span>
+                    </td>
+
+                    <td>
+                        <button
+                            class="btn-ver"
+                            (click)="verVenta(venta)">
+                            Ver
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- Sin registros -->
+    <div
+        class="sin-datos"
+        *ngIf="ventasFiltradas.length===0">
+        <h2>No existen reportes para mostrar</h2>
+
+        <p>
+            Modifica los filtros o registra nuevas ventas.
+        </p>
+    </div>
+</div>
+
+<router-outlet></router-outlet>
